@@ -15,6 +15,8 @@ const app = new Vue({
         text: "descripción",
         numero: 10,
         texto_v_model: 'Search',
+        p_error: false,
+        vue_logo: 'https://vuejs.org/images/logo.svg',
     },
     computed: {
         reversedMessage: function(){

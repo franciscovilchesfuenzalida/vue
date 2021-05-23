@@ -6,10 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue js</title>
+    <style type="text/css">
+    .error{
+        color: red;
+    }
+
+    .no_error{
+        color: rgb(59, 216, 255);
+    }
+    </style>
 </head>
 <body>
     <div id="app">
-        {{ message }}
+        <div><img :src="vue_logo" width="30"> VueJs</div>
+        
+        <p :class="{error: p_error, no_error: !p_error}">{{ message }} (class)</p>
+        <p v-if="p_error">{{ message }} if</p>
+        <p v-show="p_error">{{ message }} show</p>
         <p>reverse: {{ reversedMessage }}</p>
         {{ suma }}
         <p>{{calculateSum(2,9) }}</p>
