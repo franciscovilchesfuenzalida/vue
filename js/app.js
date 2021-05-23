@@ -3,7 +3,13 @@ const app = new Vue({
     data: {
         message: 'Hola',
         suma: 3 + 2,
-        value: 5,
+        value: 6,
+        isVisible: false,
+        people: [
+            "andres",
+            "pepe",
+            "panxo",
+        ]
     },
     computed: {
         reversedMessage: function(){
