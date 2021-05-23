@@ -9,7 +9,11 @@ const app = new Vue({
             "andres",
             "pepe",
             "panxo",
-        ]
+        ],
+        content_html: "<h1>hola</h1>",
+        image_url: "img/img_01.jpg",
+        text: "descripción",
+        numero: 10,
     },
     computed: {
         reversedMessage: function(){
@@ -19,7 +23,13 @@ const app = new Vue({
     methods: {
         calculateSum(value1,value2){
             return value1 + value2;
-        }
+        },
+        incrementar(){
+            this.numero++;
+        },
+        decrementar(){
+            this.numero--;
+        },
     },
 });
 
