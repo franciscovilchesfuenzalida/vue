@@ -32,5 +32,10 @@ const app = new Vue({
             this.numero--;
         },
     },
+    watch: {
+        numero: function(val){
+            console.log("watch: "+val);
+        }
+    },
 });
 
