@@ -14,6 +14,7 @@ const app = new Vue({
         image_url: "img/img_01.jpg",
         text: "descripción",
         numero: 10,
+        texto_v_model: 'Search',
     },
     computed: {
         reversedMessage: function(){
