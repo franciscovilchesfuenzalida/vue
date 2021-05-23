@@ -23,7 +23,7 @@ const app = new Vue({
             "andres",
             "pepe",
             "panxo",
-        ],
+        ],        
         CopyArrayObjects: [],
         ArrayObjects: [
             {name: "andres", surname: "cruz", age: "28"},

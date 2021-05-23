@@ -12,7 +12,9 @@
 <body>
     <div class="container">
        <div id="app">
-       
+      
+            <img-post :url="img_url" :title="img_title" :alt="img_title"></img-post>
+            <br>
             <router-link to="/">Home</router-link>
             <router-link to="/list-person">Person</router-link>
             <router-link to="/list-programing">Programing</router-link>
@@ -38,6 +40,7 @@
     <script src="js/components/ListPrograming.js"></script>    
     <script src="js/components/ListAlert.js"></script>    
     <script src="js/components/Slot.js"></script>    
+    <script src="js/components/ImagePost.js"></script>    
     <script src="js/components/PageNotFound.js"></script>
     <script src="js/app.js"></script>    
     <script src="../js/jquery-3.5.1.slim.min.js"></script>
