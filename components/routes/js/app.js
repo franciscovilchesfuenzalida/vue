@@ -1,7 +1,8 @@
 const router = new VueRouter({
     base: "rutas",
     routes:[
-        { path: '/lists', component: Lists }
+        { path: '/list-person', component: ListPerson },
+        { path: '/list-programing', component: ListPrograming }
     ]
 });
 
