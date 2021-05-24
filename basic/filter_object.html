@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue js | filter select</title>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="form-inline p-2">
+        <label class="p-2">Filtrar por nombre</label>
+        <input class="form-control" type="search" v-model="filterField" placeholder="type here" />
+        <div class="form-group form-check p-2">
+          <input type="checkbox" v-model="filterFieldActive" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Activos</label>
+        </div>
+        <div class="form-group form-check p-2">
+          <input type="checkbox" v-model="filterFieldInactive" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Inactivos</label>
+        </div>
+      </div>
+      <div>
+        <table class="table table-striped">
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Estado</th>
+          </tr>
+          <tr v-if="filter(person)" v-for="(person, index) in people">
+            <td>{{ person.name }}</td>
+            <td>{{ person.surname }}</td>
+            <td>{{ person.age }}</td>
+            <td>{{ person.active }}</td>
+          </tr>
+        </table>
+      </div>
+      <hr />
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          people: [
+            { name: "andres", surname: "cruz", age: "28", active: true },
+            { name: "fernando", surname: "cruz", age: "14", active: false },
+            { name: "samuel", surname: "veracruz", age: "21", active: false },
+            { name: "andrea", surname: "flores", age: "12", active: true },
+            { name: "sara", surname: "hernandez", age: "19", active: true },
+          ],
+          filterField: "",
+          filterFieldActive: false,
+          filterFieldInactive: false,
+        },
+        methods: {
+          filter(person) {
+            console.log(person.name + " " + this.filterFieldActive);
+
+            var show = true;
+
+            if(person.name.toLocaleLowerCase().indexOf(this.filterField.toLocaleLowerCase()) < 0){
+              show = false;
+            }else if(person.active === false && this.filterFieldInactive){
+              show = false;
+            }
+
+            if(person.name.toLocaleLowerCase().indexOf(this.filterField.toLocaleLowerCase()) < 0){
+              show = false;
+            }else if(person.active === false && this.filterFieldActive){
+              show = false;
+            }
+            
+            return show;
+
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
