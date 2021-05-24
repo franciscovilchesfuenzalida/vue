@@ -7,20 +7,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue js | filter select</title>
+    <title>Vue js | filter object</title>
   </head>
   <body>
     <div id="app" class="container">
       <div class="form-inline p-2">
-        <label class="p-2">Filtrar por nombre</label>
-        <input class="form-control" type="search" v-model="filterField" placeholder="type here" />
+        <label class="p-2">Name</label>
+        <input class="form-control" type="search" v-model="filterField" placeholder="search by name" />
+        <label class="p-2">Age</label>
+        <input class="form-control" type="search" v-model="filterFieldAge" placeholder="search by age" />
         <div class="form-group form-check p-2">
-          <input type="checkbox" v-model="filterFieldActive" class="form-check-input" id="exampleCheck1">
+          <input type="checkbox" v-on:click="filterFieldInactive = false" v-model="filterFieldActive" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Activos</label>
         </div>
         <div class="form-group form-check p-2">
-          <input type="checkbox" v-model="filterFieldInactive" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Inactivos</label>
+          <input type="checkbox" v-on:click="filterFieldActive = false" v-model="filterFieldInactive" class="form-check-input" id="exampleCheck2">
+          <label class="form-check-label" for="exampleCheck2">Inactivos</label>
         </div>
       </div>
       <div>
@@ -31,7 +33,7 @@
             <th>Edad</th>
             <th>Estado</th>
           </tr>
-          <tr v-if="filter(person)" v-for="(person, index) in people">
+          <tr v-show="filter(person)" v-for="(person, index) in people">
             <td>{{ person.name }}</td>
             <td>{{ person.surname }}</td>
             <td>{{ person.age }}</td>
@@ -53,6 +55,7 @@
             { name: "sara", surname: "hernandez", age: "19", active: true },
           ],
           filterField: "",
+          filterFieldAge: "",
           filterFieldActive: false,
           filterFieldInactive: false,
         },
@@ -62,15 +65,13 @@
 
             var show = true;
 
-            if(person.name.toLocaleLowerCase().indexOf(this.filterField.toLocaleLowerCase()) < 0){
+            if(this.filterFieldAge !== "" && person.age !== this.filterFieldAge){
               show = false;
-            }else if(person.active === false && this.filterFieldInactive){
+            }else if(person.name.toLocaleLowerCase().indexOf(this.filterField.toLocaleLowerCase()) < 0){
               show = false;
-            }
-
-            if(person.name.toLocaleLowerCase().indexOf(this.filterField.toLocaleLowerCase()) < 0){
+            }else if(person.active === true && this.filterFieldInactive === true){
               show = false;
-            }else if(person.active === false && this.filterFieldActive){
+            }else if(person.active === false && this.filterFieldActive === true){
               show = false;
             }
             
